@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ogslke14vpjc"]
+
+[ext_resource type="Script" path="res://scripts/drawer.gd" id="1_4wc0f"]
+[ext_resource type="Texture2D" uid="uid://b4l3a6k68tnix" path="res://assets/ui/drawer.png" id="2_470p1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vguqn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5e4k"]
+size = Vector2(882, 140)
+
+[node name="Drawer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 250.0
+script = ExtResource("1_4wc0f")
+grid_size = Vector2(42, 30)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_470p1")
+
+[node name="Handle" type="Button" parent="."]
+layout_mode = 0
+offset_left = 65.0
+offset_right = 893.0
+offset_bottom = 28.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vguqn")
+flat = true
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(480, 166)
+shape = SubResource("RectangleShape2D_c5e4k")
+
+[connection signal="button_down" from="Handle" to="." method="_on_handle_button_down"]
+[connection signal="button_up" from="Handle" to="." method="_on_handle_button_up"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2vqextiq0c1g"]
+
+[ext_resource type="Script" path="res://scripts/slot.gd" id="1_3jhpk"]
+[ext_resource type="Texture2D" uid="uid://bd2gl01nsd61e" path="res://assets/ui/slot.png" id="2_ls7ts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2uqds"]
+size = Vector2(69, 103.5)
+
+[node name="Slot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -960.0
+offset_bottom = -600.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3jhpk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 124.0
+texture = ExtResource("2_ls7ts")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(44, 61)
+shape = SubResource("RectangleShape2D_2uqds")
