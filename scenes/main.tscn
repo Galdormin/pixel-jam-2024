@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3vtxlawk5erc"]
+[gd_scene load_steps=7 format=3 uid="uid://d3vtxlawk5erc"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_5kt6n"]
 [ext_resource type="PackedScene" uid="uid://djplopb2ynyxg" path="res://scenes/card.tscn" id="1_r388q"]
-[ext_resource type="PackedScene" uid="uid://c2vqextiq0c1g" path="res://scenes/slot.tscn" id="2_in66r"]
 [ext_resource type="PackedScene" uid="uid://ogslke14vpjc" path="res://scenes/drawer.tscn" id="2_sk0e2"]
 [ext_resource type="PackedScene" uid="uid://du7mhhyvyew5s" path="res://scenes/helm_window.tscn" id="5_66xlv"]
+[ext_resource type="PackedScene" uid="uid://bb8nh81yus0la" path="res://scenes/water_window.tscn" id="5_he5d5"]
+[ext_resource type="PackedScene" uid="uid://0ik1o7kd8g1a" path="res://scenes/fish_window.tscn" id="6_4d10n"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_5kt6n")
@@ -13,50 +14,54 @@ script = ExtResource("1_5kt6n")
 offset_top = 293.0
 offset_bottom = 543.0
 
-[node name="Slot" parent="." instance=ExtResource("2_in66r")]
-offset_left = 192.0
-offset_top = 129.0
-offset_right = -705.0
-offset_bottom = -381.0
-card_type = 8
-
-[node name="Cards" type="Node" parent="."]
-
-[node name="Card" parent="Cards" instance=ExtResource("1_r388q")]
-offset_left = 770.0
-offset_top = 126.0
-offset_right = 854.0
-offset_bottom = 246.0
+[node name="Card" parent="Drawer" instance=ExtResource("1_r388q")]
+layout_mode = 0
+offset_left = 815.0
+offset_top = 105.0
+offset_right = 899.0
+offset_bottom = 225.0
 card_name = "Ramen"
 card_type = "Food"
 
-[node name="Card2" parent="Cards" instance=ExtResource("1_r388q")]
-offset_left = 627.0
-offset_top = 66.0
-offset_right = 711.0
-offset_bottom = 186.0
-card_name = "Ramen Plant"
-card_type = "Plant"
-
-[node name="Card3" parent="Cards" instance=ExtResource("1_r388q")]
-offset_left = 467.0
-offset_top = 186.0
-offset_right = 551.0
-offset_bottom = 306.0
-card_name = "Ramen Island"
-card_type = "Map"
-
 [node name="HelmWindow" parent="." instance=ExtResource("5_66xlv")]
-offset_left = 46.0
-offset_top = 50.0
-offset_right = 46.0
-offset_bottom = 50.0
+offset_left = 25.0
+offset_top = 38.0
+offset_right = 25.0
+offset_bottom = 38.0
+
+[node name="WaterWindow" parent="." instance=ExtResource("5_he5d5")]
+offset_left = 450.0
+offset_top = 64.0
+offset_right = 450.0
+offset_bottom = 64.0
+
+[node name="FishingWindow" parent="." instance=ExtResource("6_4d10n")]
+offset_left = 26.0
+offset_top = 73.0
+offset_right = 26.0
+offset_bottom = 73.0
+
+[node name="WaterButton" type="Button" parent="."]
+offset_left = 398.0
+offset_top = 9.0
+offset_right = 490.0
+offset_bottom = 40.0
+text = "Water"
+
+[node name="FishButton" type="Button" parent="."]
+offset_left = 501.0
+offset_top = 9.0
+offset_right = 593.0
+offset_bottom = 40.0
+text = "Fish"
 
 [node name="HelmButton" type="Button" parent="."]
-offset_left = 359.0
+offset_left = 292.0
 offset_top = 10.0
-offset_right = 451.0
+offset_right = 384.0
 offset_bottom = 41.0
-text = "Open"
+text = "Naviguate"
 
-[connection signal="pressed" from="HelmButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="WaterButton" to="." method="_on_water_button_pressed"]
+[connection signal="pressed" from="FishButton" to="." method="_on_fish_button_pressed"]
+[connection signal="pressed" from="HelmButton" to="." method="_on_helm_button_pressed"]

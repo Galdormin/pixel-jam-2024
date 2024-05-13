@@ -14,6 +14,18 @@ func _ready():
 			card_types.append(TYPES[i])
 
 
+func _process(delta):
+	if card_slot and card_slot.get_parent() != self:
+		card_slot = null
+		
+	if card_slot and not card_slot.following_mouse and card_slot.position != get_card_position(Vector2.ZERO):
+		card_slot.global_position = get_card_position(Vector2.ZERO)
+
+### SIGNAL FUNCTIONS ###
+
+
+### REGULAR FUNCTIONS ###
+
 # Return if the card can be accepted into the slot
 func accept_card(card: Card) -> bool:
 	if card_slot == null:
@@ -34,6 +46,10 @@ func update_card_support(card: Card):
 
 func get_card() -> Card:
 	return card_slot
+	
+
+func has_card() -> bool:
+	return card_slot != null
 
 
 func remove_card():
@@ -45,9 +61,17 @@ func delete_card():
 	card_slot = null
 
 
-func lock():
+func lock_card():
 	card_slot.disable_drag()
 
 
-func unlock():
+func unlock_card():
 	card_slot.enable_drag()
+
+
+func disable():
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+
+
+func enable():
+	$Area2D/CollisionShape2D.set_deferred("disabled", false)

@@ -38,3 +38,4 @@ shape = SubResource("RectangleShape2D_c5e4k")
 
 [connection signal="button_down" from="Handle" to="." method="_on_handle_button_down"]
 [connection signal="button_up" from="Handle" to="." method="_on_handle_button_up"]
+[connection signal="gui_input" from="Handle" to="." method="_on_handle_gui_input"]

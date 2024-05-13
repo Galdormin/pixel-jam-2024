@@ -33,7 +33,8 @@ var velocity: Vector2
 func _ready():
 	$Name.text = card_name
 	$Background.texture = load("res://assets/cards/background/" + card_type.to_lower() + ".png")
-	# TODO: Change artwork based on card_type + name
+	$Shadow.texture = load("res://assets/cards/art/" + card_name.to_lower() + ".png")
+	$Art.texture = load("res://assets/cards/art/" + card_name.to_lower() + ".png")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -117,13 +118,13 @@ func _on_button_up():
 	stabilisation = true
 	
 	var areas = $ActivationArea.get_overlapping_areas()
+	# Remove other cards
 	areas = areas.filter(func(area): return not (area.get_parent() is Card))
-	# areas.sort_custom(func(a, b): return get_absolute_z_index(a) > get_absolute_z_index(b))
-	print(areas)
-	for area in areas:
-		print(get_absolute_z_index(area))
+	# Sort by z_index
+	areas.sort_custom(func(a, b): return get_absolute_z_index(a) > get_absolute_z_index(b))
+	
 	if areas:
-		var support = areas[0].get_parent() # May need sort by z_index
+		var support = areas[0].get_parent()
 		
 		if support.accept_card(self):
 			reparent(support)
@@ -135,11 +136,11 @@ func _on_button_up():
 		reset_position()
 	
 	# Show to front
-	z_index = 1 # TODO: put in constant
+	z_index = 0 # TODO: put in constant
 
 
 
-static func get_absolute_z_index(target: CanvasItem) -> int:
+func get_absolute_z_index(target: CanvasItem) -> int:
 	var node = target;
 	var z_index = 0;
 	while node and node.is_class('CanvasItem'):
