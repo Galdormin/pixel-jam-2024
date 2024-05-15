@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8illu6geriup"
-path="res://.godot/imported/plant.png-f63e5cf7a5d878678aa3f256e6f733cc.ctex"
+uid="uid://bmtseiit5nbru"
+path="res://.godot/imported/kitchen_highlight.png-40ee33959504dbdbbaf82a8d91425483.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/background/plant.png"
-dest_files=["res://.godot/imported/plant.png-f63e5cf7a5d878678aa3f256e6f733cc.ctex"]
+source_file="res://assets/boat/kitchen_highlight.png"
+dest_files=["res://.godot/imported/kitchen_highlight.png-40ee33959504dbdbbaf82a8d91425483.ctex"]
 
 [params]
 

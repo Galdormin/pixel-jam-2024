@@ -1,0 +1,70 @@
+{
+	"Sardine": {
+		"name": "Sardine Tempura",
+		"recipe": [
+			["Sardine"],
+			["Floor", "Aqua"]
+		]
+	},
+	"Bream": {
+		"name": "Sea Bream Stew",
+		"recipe": [
+			["Sea Bream", "Aqua"],
+			["Carrot", "Carrot"]
+		]
+	},
+	"Cod": {
+		"name": "Cod Ramen",
+		"recipe": [
+			["Cod"],
+			["Floor", "Aqua"],
+			["Aqua", "Seaweed"]
+		]
+	},
+	"Eel": {
+		"name": "Eel with Seaweed",
+		"recipe": [
+			["Eel", "Carrot"],
+			["Seaweed", "Seaweed"],
+		]
+	},
+	"Pike": {
+		"name": "Pike Quenelle",
+		"recipe": [
+			["Pike"],
+			["Floor"],
+			["Cabbage"]
+		]
+	},
+	"Mussel": {
+		"name": "Moules-Frites",
+		"recipe": [
+			["Mussel", "Aqua"],
+			["Potato", "Potato"]
+		]
+	},
+	"Burbott": {
+		"name": "Bouillabaisse",
+		"recipe": [
+			["Burbott", "Sea Bass"],
+			["Mussel", "Water"],
+			["Potato", "Carrot"]
+		]
+	},
+	"Sea Bass": {
+		"name": "Bouillabaisse",
+		"recipe": [
+			["Burbott", "Sea Bass"],
+			["Mussel", "Water"],
+			["Potato", "Carrot"]
+		]
+	},
+	"Crab": {
+		"name": "Krabby Patty",
+		"recipe": [
+			["Crab"],
+			["Floor", "Water"],
+			["Potato", "Potato"]
+		]
+	}
+}

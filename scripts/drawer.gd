@@ -7,7 +7,7 @@ extends Control
 # Constants Drawer Movement
 const MARGIN = 50
 @onready var MAX = 600 - MARGIN
-@onready var MIN = 600 - $TextureRect.size.y
+@onready var MIN = 600 - $TextureRect.size.y + 50
 
 # Drawer mouvement
 var following_mouse: bool = false
@@ -35,18 +35,25 @@ func _on_handle_gui_input(event):
 	elif event.is_released() and following_mouse:
 		following_mouse = false
 
-### REGULAR FUNCTIONS ###
+### SUPPORT FUNCTIONS ###
 
 func accept_card(card: Card) -> bool:
 	return true
 
 
 func get_card_position(pos: Vector2) -> Vector2:
-	return round(pos / grid_size) * grid_size
+	return round((pos - global_position) / grid_size) * grid_size + global_position
 
 
-func update_card_support(card: Card):
-	pass	
+func add_card(card: Card, with_animation: bool = false):
+	card.reparent(self)
+	if with_animation:
+		card.update_position(get_card_position(card.global_position))
+	else:
+		card.global_position = get_card_position(card.global_position)
+
+
+### REGULAR FUNCTIONS ###
 
 
 func open_position(pos: int):

@@ -1,0 +1,20 @@
+{
+	"Sea": {
+		"empty": "Oyster Shell",
+		"Oyster Shell": "Sardine",
+		"Worm": "Bream",
+		"Fish": "Cod"
+	},
+	"Swamp": {
+		"empty": "Seaweed",
+		"Oyster Shell": "Fish",
+		"Worm": "Eel",
+		"Fish": "Pike"
+	},
+	"Rocks": {
+		"empty": "Mussel",
+		"Oyster Shell": "Sea bass",
+		"Worm": "Burbott",
+		"Fish": "Crab"
+	}
+}

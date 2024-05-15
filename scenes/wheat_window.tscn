@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://cim2syoph4f1p"]
+
+[ext_resource type="PackedScene" uid="uid://bvysxwumu1ofw" path="res://scenes/window.tscn" id="1_wt47g"]
+[ext_resource type="Script" path="res://scripts/wheat_window.gd" id="2_u7non"]
+[ext_resource type="PackedScene" uid="uid://c2vqextiq0c1g" path="res://scenes/slot.tscn" id="3_y3qlw"]
+[ext_resource type="Texture2D" uid="uid://vnrtn7tp4n02" path="res://assets/ui/button/main_button_normal.png" id="4_k8p57"]
+[ext_resource type="Texture2D" uid="uid://ccg43x4yp7fby" path="res://assets/ui/button/main_button_pressed.png" id="5_ntnqg"]
+[ext_resource type="Theme" uid="uid://dw88p5q24f3k5" path="res://themes/card.tres" id="6_l2o64"]
+[ext_resource type="Texture2D" uid="uid://dmlefqqxfs87y" path="res://assets/ui/logo/food.png" id="7_sqg3i"]
+[ext_resource type="Texture2D" uid="uid://cjocsht4m8d0h" path="res://assets/ui/logo/food_white.png" id="8_ngwrr"]
+
+[node name="Window" instance=ExtResource("1_wt47g")]
+offset_right = 280.0
+offset_bottom = 195.0
+script = ExtResource("2_u7non")
+
+[node name="Titre" parent="." index="1"]
+text = "Wheat Culture"
+
+[node name="Slot" parent="." index="3" instance=ExtResource("3_y3qlw")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 151.0
+offset_top = 34.0
+offset_right = 151.0
+offset_bottom = 34.0
+grow_horizontal = 1
+grow_vertical = 1
+card_type = 2
+
+[node name="Timer" type="Timer" parent="." index="4"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Start" type="TextureButton" parent="." index="5"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 164.0
+offset_right = 250.0
+offset_bottom = 186.0
+texture_normal = ExtResource("4_k8p57")
+texture_pressed = ExtResource("5_ntnqg")
+texture_disabled = ExtResource("5_ntnqg")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Start" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_l2o64")
+text = "Watering"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="TextureProgressBar" parent="." index="6"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 54.0
+offset_right = 99.0
+offset_bottom = 140.0
+scale = Vector2(1.3, 1.3)
+value = 75.0
+fill_mode = 3
+texture_under = ExtResource("7_sqg3i")
+texture_progress = ExtResource("8_ngwrr")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

@@ -1,0 +1,145 @@
+[gd_scene load_steps=7 format=3 uid="uid://7n4rkf3kbdtp"]
+
+[ext_resource type="PackedScene" uid="uid://bvysxwumu1ofw" path="res://scenes/window.tscn" id="1_v5vbs"]
+[ext_resource type="PackedScene" uid="uid://c2vqextiq0c1g" path="res://scenes/slot.tscn" id="2_oanev"]
+[ext_resource type="Script" path="res://scripts/kitchen_window.gd" id="2_qmomr"]
+[ext_resource type="Theme" uid="uid://dw88p5q24f3k5" path="res://themes/card.tres" id="3_t6v4a"]
+[ext_resource type="Texture2D" uid="uid://vnrtn7tp4n02" path="res://assets/ui/button/main_button_normal.png" id="4_6aydf"]
+[ext_resource type="Texture2D" uid="uid://ccg43x4yp7fby" path="res://assets/ui/button/main_button_pressed.png" id="5_ht1au"]
+
+[node name="Window" instance=ExtResource("1_v5vbs")]
+offset_right = 438.0
+offset_bottom = 214.0
+script = ExtResource("2_qmomr")
+
+[node name="Titre" parent="." index="1"]
+text = "Kitchen"
+
+[node name="Slot1" parent="." index="3" instance=ExtResource("2_oanev")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 330.0
+offset_top = 46.0
+offset_right = 330.0
+offset_bottom = 46.0
+grow_horizontal = 1
+grow_vertical = 1
+card_type = 10
+
+[node name="Slot2" parent="." index="4" instance=ExtResource("2_oanev")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 230.0
+offset_top = 46.0
+offset_right = 230.0
+offset_bottom = 46.0
+grow_horizontal = 1
+grow_vertical = 1
+card_type = 10
+
+[node name="RecipeLabel" type="Label" parent="." index="5"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 43.0
+offset_right = 199.0
+offset_bottom = 62.0
+theme = ExtResource("3_t6v4a")
+text = "Recipe :"
+
+[node name="RecipeName" type="Label" parent="RecipeLabel" index="0"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 142.0
+offset_bottom = 19.0
+theme = ExtResource("3_t6v4a")
+text = "Moules-frites"
+
+[node name="RecipeGrid" type="GridContainer" parent="." index="6"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 69.0
+offset_right = 195.0
+offset_bottom = 145.0
+columns = 2
+
+[node name="Label4" type="Label" parent="RecipeGrid" index="0"]
+layout_mode = 2
+theme = ExtResource("3_t6v4a")
+text = "1-
+"
+
+[node name="Label5" type="Label" parent="RecipeGrid" index="1"]
+layout_mode = 2
+theme = ExtResource("3_t6v4a")
+text = "Cook the mussel in water
+"
+
+[node name="Label2" type="Label" parent="RecipeGrid" index="2"]
+layout_mode = 2
+theme = ExtResource("3_t6v4a")
+text = "
+"
+
+[node name="Label3" type="Label" parent="RecipeGrid" index="3"]
+layout_mode = 2
+theme = ExtResource("3_t6v4a")
+text = "-> Add 1 mussel and 1 water
+"
+
+[node name="Label6" type="Label" parent="RecipeGrid" index="4"]
+layout_mode = 2
+theme = ExtResource("3_t6v4a")
+text = "2-
+"
+
+[node name="Label7" type="Label" parent="RecipeGrid" index="5"]
+layout_mode = 2
+theme = ExtResource("3_t6v4a")
+text = "Make the french fries
+"
+
+[node name="Label8" type="Label" parent="RecipeGrid" index="6"]
+layout_mode = 2
+theme = ExtResource("3_t6v4a")
+text = "
+"
+
+[node name="Label9" type="Label" parent="RecipeGrid" index="7"]
+layout_mode = 2
+theme = ExtResource("3_t6v4a")
+text = "-> Add 2 potatoes
+"
+
+[node name="Start" type="TextureButton" parent="." index="7"]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 178.0
+offset_right = 380.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_6aydf")
+texture_pressed = ExtResource("5_ht1au")
+texture_disabled = ExtResource("5_ht1au")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Start" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_t6v4a")
+text = "Start Cooking"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." index="8"]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

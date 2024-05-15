@@ -1,67 +1,52 @@
-extends Control
+extends UIWindow
 
-# Progressbar
+@onready var slot: Slot = $Slot
+
 var progress_enable: bool = false
 
-# Move window around
-var following_mouse: bool = false
-var anchor_position: Vector2
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	super()
 
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if following_mouse:
-		global_position = get_global_mouse_position() - anchor_position
+	super(ready)
 	
 	# Progress
 	if progress_enable:
 		$ProgressBar.value = ($Timer.wait_time - $Timer.time_left) / $Timer.wait_time * 100
 		
-	if not $MapSlot.has_card():
+	if not slot.has_card():
 		$ProgressBar.value = 0
+
 
 ### SIGNALS ###
 
-func _on_quit_pressed():
-	close()
-
-
-func _on_naviguate_pressed():
-	if $MapSlot.has_card():
-		$MapSlot.lock_card()
+func _on_start_pressed():
+	if slot.has_card():
+		slot.lock_card()
 		$Timer.start()
 		progress_enable = true
 		disable_button()
 
 
 func _on_timer_timeout():
-	$MapSlot.unlock_card()
+	slot.unlock_card()
 	progress_enable = false
 	enable_button()
 
 
-func _on_background_gui_input(event):
-	if not (event is InputEventMouseButton): return
-	
-	if event.is_pressed() and not following_mouse:
-		anchor_position = get_global_mouse_position() - global_position
-		following_mouse = true
-		get_parent().move_child(self, -1) # Move a top of window
-	elif event.is_released() and following_mouse:
-		following_mouse = false
+### FUNCTIONS ###
 
-
-### REGULAR FUNCTIONS ###
-
-# Close window
 func close():
-	hide()
-	$MapSlot.disable()
-	
+	super()
+	slot.disable()
 
-# Open window
+
 func open():
-	show()
-	$MapSlot.enable()
+	super()
+	slot.enable()
 
 
 func disable_button():

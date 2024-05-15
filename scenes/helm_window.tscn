@@ -1,74 +1,48 @@
-[gd_scene load_steps=11 format=3 uid="uid://du7mhhyvyew5s"]
+[gd_scene load_steps=9 format=3 uid="uid://cuicqtp1mf37u"]
 
 [ext_resource type="Script" path="res://scripts/helm_window.gd" id="1_0i6lq"]
-[ext_resource type="PackedScene" uid="uid://c2vqextiq0c1g" path="res://scenes/slot.tscn" id="2_o2nfp"]
-[ext_resource type="Texture2D" uid="uid://cwlaq63vxyfpd" path="res://assets/ui/window/helm_window.png" id="2_t2ril"]
-[ext_resource type="Theme" uid="uid://dw88p5q24f3k5" path="res://themes/card.tres" id="5_iavi8"]
-[ext_resource type="Texture2D" uid="uid://bhpjnwyo23hmp" path="res://assets/ui/button/quit_normal.png" id="5_wmijp"]
-[ext_resource type="Texture2D" uid="uid://bnv17yt4iibnv" path="res://assets/ui/button/quit_pressed.png" id="6_v2evr"]
-[ext_resource type="Texture2D" uid="uid://vnrtn7tp4n02" path="res://assets/ui/button/main_button_normal.png" id="7_6wf1o"]
-[ext_resource type="Texture2D" uid="uid://ccg43x4yp7fby" path="res://assets/ui/button/main_button_pressed.png" id="8_8ball"]
-[ext_resource type="Texture2D" uid="uid://dhdjkqub3d45y" path="res://assets/ui/logo/helm.png" id="9_tug58"]
-[ext_resource type="Texture2D" uid="uid://hsrjq3qtf7au" path="res://assets/ui/logo/helm_white.png" id="10_aq7y7"]
+[ext_resource type="PackedScene" uid="uid://bvysxwumu1ofw" path="res://scenes/window.tscn" id="1_t55mq"]
+[ext_resource type="Texture2D" uid="uid://vnrtn7tp4n02" path="res://assets/ui/button/main_button_normal.png" id="2_gmi21"]
+[ext_resource type="PackedScene" uid="uid://c2vqextiq0c1g" path="res://scenes/slot.tscn" id="2_osngu"]
+[ext_resource type="Texture2D" uid="uid://ccg43x4yp7fby" path="res://assets/ui/button/main_button_pressed.png" id="3_0j8jn"]
+[ext_resource type="Theme" uid="uid://dw88p5q24f3k5" path="res://themes/card.tres" id="4_aomu1"]
+[ext_resource type="Texture2D" uid="uid://dhdjkqub3d45y" path="res://assets/ui/logo/helm.png" id="5_mask8"]
+[ext_resource type="Texture2D" uid="uid://hsrjq3qtf7au" path="res://assets/ui/logo/helm_white.png" id="6_cp0sd"]
 
-[node name="HelmWindow" type="Control"]
-z_index = 10
-layout_mode = 3
-anchors_preset = 0
+[node name="Window" instance=ExtResource("1_t55mq")]
+offset_right = 281.0
+offset_bottom = 196.0
 script = ExtResource("1_0i6lq")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_t2ril")
-
-[node name="MapSlot" parent="." instance=ExtResource("2_o2nfp")]
+[node name="Slot" parent="." index="3" instance=ExtResource("2_osngu")]
 layout_mode = 1
-offset_left = 172.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 160.0
 offset_top = 37.0
-offset_right = 172.0
+offset_right = 160.0
 offset_bottom = 37.0
-card_type = 8
+grow_horizontal = 1
+grow_vertical = 1
+card_type = 4
 
-[node name="Titre" type="Label" parent="."]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 5.0
-offset_right = 300.0
-offset_bottom = 28.0
-theme = ExtResource("5_iavi8")
-text = "Navigation"
-horizontal_alignment = 1
-
-[node name="Quit" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 286.0
-offset_top = 8.0
-offset_right = 302.0
-offset_bottom = 22.0
-grow_horizontal = 0
-texture_normal = ExtResource("5_wmijp")
-texture_pressed = ExtResource("6_v2evr")
-
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." index="4"]
 wait_time = 5.0
 one_shot = true
 
-[node name="Start" type="TextureButton" parent="."]
+[node name="Start" type="TextureButton" parent="." index="5"]
 layout_mode = 0
-offset_left = 162.0
+offset_left = 151.0
 offset_top = 165.0
-offset_right = 270.0
+offset_right = 259.0
 offset_bottom = 187.0
-texture_normal = ExtResource("7_6wf1o")
-texture_pressed = ExtResource("8_8ball")
-texture_disabled = ExtResource("8_8ball")
+texture_normal = ExtResource("2_gmi21")
+texture_pressed = ExtResource("3_0j8jn")
+texture_disabled = ExtResource("3_0j8jn")
+metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="Start"]
+[node name="Label" type="Label" parent="Start" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,24 +50,22 @@ anchor_bottom = 1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("5_iavi8")
+theme = ExtResource("4_aomu1")
 text = "Naviguate"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProgressBar" type="TextureProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="." index="6"]
 layout_mode = 0
-offset_left = 39.0
-offset_top = 50.0
-offset_right = 113.0
-offset_bottom = 136.0
+offset_left = 30.0
+offset_top = 54.0
+offset_right = 104.0
+offset_bottom = 140.0
 scale = Vector2(1.3, 1.3)
 value = 75.0
 fill_mode = 3
-texture_under = ExtResource("9_tug58")
-texture_progress = ExtResource("10_aq7y7")
+texture_under = ExtResource("5_mask8")
+texture_progress = ExtResource("6_cp0sd")
 
-[connection signal="gui_input" from="Background" to="." method="_on_background_gui_input"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Start" to="." method="_on_naviguate_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

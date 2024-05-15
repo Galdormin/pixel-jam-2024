@@ -1,67 +1,171 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3vtxlawk5erc"]
+[gd_scene load_steps=23 format=3 uid="uid://d3vtxlawk5erc"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_5kt6n"]
 [ext_resource type="PackedScene" uid="uid://djplopb2ynyxg" path="res://scenes/card.tscn" id="1_r388q"]
+[ext_resource type="Texture2D" uid="uid://matrn7shyeat" path="res://assets/boat/boat.png" id="2_br3x8"]
 [ext_resource type="PackedScene" uid="uid://ogslke14vpjc" path="res://scenes/drawer.tscn" id="2_sk0e2"]
-[ext_resource type="PackedScene" uid="uid://du7mhhyvyew5s" path="res://scenes/helm_window.tscn" id="5_66xlv"]
-[ext_resource type="PackedScene" uid="uid://bb8nh81yus0la" path="res://scenes/water_window.tscn" id="5_he5d5"]
-[ext_resource type="PackedScene" uid="uid://0ik1o7kd8g1a" path="res://scenes/fish_window.tscn" id="6_4d10n"]
+[ext_resource type="PackedScene" uid="uid://cf0gj60igg086" path="res://scenes/info_popup.tscn" id="4_roj4n"]
+[ext_resource type="Texture2D" uid="uid://cko6wmuc2oy8d" path="res://assets/boat/water.png" id="5_6kf5c"]
+[ext_resource type="PackedScene" uid="uid://dspdb0j60d4tg" path="res://scenes/water_window.tscn" id="5_he5d5"]
+[ext_resource type="PackedScene" uid="uid://dwvwdodx7o8cn" path="res://scenes/fish_window.tscn" id="6_4d10n"]
+[ext_resource type="Texture2D" uid="uid://cnovtq38asgfp" path="res://assets/boat/water_highlight.png" id="6_ujiqr"]
+[ext_resource type="PackedScene" uid="uid://cuicqtp1mf37u" path="res://scenes/helm_window.tscn" id="6_xcy5i"]
+[ext_resource type="Texture2D" uid="uid://1vhtxrbu3aak" path="res://assets/boat/helm.png" id="7_2u6ky"]
+[ext_resource type="Texture2D" uid="uid://c5qrrvtpjdyun" path="res://assets/boat/helm_highlight.png" id="8_tf4oj"]
+[ext_resource type="Texture2D" uid="uid://dfnl6a77oeo13" path="res://assets/boat/fish.png" id="9_kc7w3"]
+[ext_resource type="Texture2D" uid="uid://dgvkegjwvwp0x" path="res://assets/boat/ladder.png" id="9_khf4a"]
+[ext_resource type="Texture2D" uid="uid://6wjrmv0qofn6" path="res://assets/boat/ladder_highlight.png" id="10_a1j02"]
+[ext_resource type="Texture2D" uid="uid://c7dm8ba2r701v" path="res://assets/boat/fish_highlight.png" id="10_qw4rl"]
+[ext_resource type="Texture2D" uid="uid://65htw1v1j17w" path="res://assets/boat/kitchen.png" id="11_nupn0"]
+[ext_resource type="Texture2D" uid="uid://bmtseiit5nbru" path="res://assets/boat/kitchen_highlight.png" id="12_rhopd"]
+[ext_resource type="Texture2D" uid="uid://chfc6pnqroht3" path="res://assets/boat/food.png" id="13_c8tv7"]
+[ext_resource type="Texture2D" uid="uid://ck2r5lagg47fx" path="res://assets/boat/food_highlight.png" id="14_433h6"]
+[ext_resource type="PackedScene" uid="uid://cim2syoph4f1p" path="res://scenes/wheat_window.tscn" id="21_food7"]
+[ext_resource type="PackedScene" uid="uid://7n4rkf3kbdtp" path="res://scenes/kitchen_window.tscn" id="22_iho8p"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_5kt6n")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3984, 0.621393, 0.83, 1)
+
+[node name="Boat" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_br3x8")
+
+[node name="LadderButton" type="TextureButton" parent="Boat"]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 250.0
+offset_right = 444.0
+offset_bottom = 350.0
+texture_normal = ExtResource("9_khf4a")
+texture_hover = ExtResource("10_a1j02")
+
+[node name="WaterButton" type="TextureButton" parent="Boat"]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 274.0
+offset_right = 344.0
+offset_bottom = 356.0
+texture_normal = ExtResource("5_6kf5c")
+texture_hover = ExtResource("6_ujiqr")
+
+[node name="HelmButton" type="TextureButton" parent="Boat"]
+layout_mode = 0
+offset_left = 675.0
+offset_top = 157.0
+offset_right = 741.0
+offset_bottom = 241.0
+texture_normal = ExtResource("7_2u6ky")
+texture_hover = ExtResource("8_tf4oj")
+
+[node name="FishButton" type="TextureButton" parent="Boat"]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 98.0
+offset_right = 247.0
+offset_bottom = 186.0
+texture_normal = ExtResource("9_kc7w3")
+texture_hover = ExtResource("10_qw4rl")
+
+[node name="KitchenButton" type="TextureButton" parent="Boat"]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 174.0
+offset_right = 404.0
+offset_bottom = 232.0
+texture_normal = ExtResource("11_nupn0")
+texture_hover = ExtResource("12_rhopd")
+
+[node name="WheatButton" type="TextureButton" parent="Boat"]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 212.0
+offset_right = 590.0
+offset_bottom = 264.0
+texture_normal = ExtResource("13_c8tv7")
+texture_hover = ExtResource("14_433h6")
+
 [node name="Drawer" parent="." instance=ExtResource("2_sk0e2")]
-offset_top = 293.0
-offset_bottom = 543.0
+offset_top = 506.0
+offset_bottom = 756.0
 
 [node name="Card" parent="Drawer" instance=ExtResource("1_r388q")]
 layout_mode = 0
-offset_left = 815.0
-offset_top = 105.0
-offset_right = 899.0
-offset_bottom = 225.0
-card_name = "Ramen"
+offset_left = 264.0
+offset_top = 113.0
+offset_right = 348.0
+offset_bottom = 233.0
+card_name = "Cod Ramen"
+card_type = "Map"
+
+[node name="Card3" parent="Drawer" instance=ExtResource("1_r388q")]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 109.0
+offset_right = 563.0
+offset_bottom = 229.0
+card_name = "Sardine"
 card_type = "Food"
 
-[node name="HelmWindow" parent="." instance=ExtResource("5_66xlv")]
-offset_left = 25.0
-offset_top = 38.0
-offset_right = 25.0
-offset_bottom = 38.0
+[node name="Card4" parent="Drawer" instance=ExtResource("1_r388q")]
+layout_mode = 0
+offset_left = 694.0
+offset_top = 114.0
+offset_right = 778.0
+offset_bottom = 234.0
+card_name = "Floor"
+card_type = "Food"
+
+[node name="InfoPopup" parent="." instance=ExtResource("4_roj4n")]
+unique_name_in_owner = true
+offset_left = 709.0
+offset_right = -1.0
+
+[node name="HelmWindow" parent="." instance=ExtResource("6_xcy5i")]
+visible = false
+offset_left = 668.0
+offset_top = 112.0
+offset_right = 949.0
+offset_bottom = 308.0
 
 [node name="WaterWindow" parent="." instance=ExtResource("5_he5d5")]
-offset_left = 450.0
-offset_top = 64.0
-offset_right = 450.0
-offset_bottom = 64.0
+visible = false
+offset_left = 90.0
+offset_top = 271.0
+offset_right = 529.0
+offset_bottom = 471.0
 
 [node name="FishingWindow" parent="." instance=ExtResource("6_4d10n")]
-offset_left = 26.0
-offset_top = 73.0
-offset_right = 26.0
-offset_bottom = 73.0
+visible = false
+offset_left = 42.0
+offset_top = 43.0
+offset_right = 322.0
+offset_bottom = 238.0
 
-[node name="WaterButton" type="Button" parent="."]
-offset_left = 398.0
-offset_top = 9.0
-offset_right = 490.0
-offset_bottom = 40.0
-text = "Water"
+[node name="WheatWindow" parent="." instance=ExtResource("21_food7")]
+visible = false
+offset_left = 449.0
+offset_top = 206.0
+offset_right = 729.0
+offset_bottom = 401.0
 
-[node name="FishButton" type="Button" parent="."]
-offset_left = 501.0
-offset_top = 9.0
-offset_right = 593.0
-offset_bottom = 40.0
-text = "Fish"
+[node name="KitchenWindow" parent="." instance=ExtResource("22_iho8p")]
+visible = false
+offset_left = 244.0
+offset_top = 25.0
+offset_right = 682.0
+offset_bottom = 239.0
 
-[node name="HelmButton" type="Button" parent="."]
-offset_left = 292.0
-offset_top = 10.0
-offset_right = 384.0
-offset_bottom = 41.0
-text = "Naviguate"
-
-[connection signal="pressed" from="WaterButton" to="." method="_on_water_button_pressed"]
-[connection signal="pressed" from="FishButton" to="." method="_on_fish_button_pressed"]
-[connection signal="pressed" from="HelmButton" to="." method="_on_helm_button_pressed"]
+[connection signal="pressed" from="Boat/WaterButton" to="." method="_on_water_button_pressed"]
+[connection signal="pressed" from="Boat/HelmButton" to="." method="_on_helm_button_pressed"]
+[connection signal="pressed" from="Boat/FishButton" to="." method="_on_fish_button_pressed"]
+[connection signal="pressed" from="Boat/KitchenButton" to="." method="_on_kitchen_button_pressed"]
+[connection signal="pressed" from="Boat/WheatButton" to="." method="_on_wheat_button_pressed"]

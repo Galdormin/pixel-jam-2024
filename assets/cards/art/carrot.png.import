@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daimxlq8g1weq"
-path="res://.godot/imported/ramen.png-e97979e6825e8dd8c923859d9cdbfb3a.ctex"
+uid="uid://do2q1ffrpkyou"
+path="res://.godot/imported/carrot.png-72e69bcbc60896bfc9b995b279426211.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/art/ramen.png"
-dest_files=["res://.godot/imported/ramen.png-e97979e6825e8dd8c923859d9cdbfb3a.ctex"]
+source_file="res://assets/cards/art/carrot.png"
+dest_files=["res://.godot/imported/carrot.png-72e69bcbc60896bfc9b995b279426211.ctex"]
 
 [params]
 

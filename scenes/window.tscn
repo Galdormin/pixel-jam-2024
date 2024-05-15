@@ -1,54 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwc83v7ufryng"]
+[gd_scene load_steps=8 format=3 uid="uid://bvysxwumu1ofw"]
 
-[ext_resource type="Script" path="res://scripts/window.gd" id="1_ksqua"]
-[ext_resource type="Texture2D" uid="uid://d2e1w47wofgcc" path="res://assets/ui/button/Button_Red.png" id="1_un23u"]
-[ext_resource type="Texture2D" uid="uid://b5nvpo12k72c1" path="res://assets/ui/button/Button_Red_Pressed.png" id="2_cv4jb"]
-[ext_resource type="PackedScene" uid="uid://c2vqextiq0c1g" path="res://scenes/slot.tscn" id="4_koqdb"]
+[ext_resource type="Texture2D" uid="uid://cwlaq63vxyfpd" path="res://assets/ui/window/helm_window.png" id="1_n8e4u"]
+[ext_resource type="Theme" uid="uid://dw88p5q24f3k5" path="res://themes/card.tres" id="2_8bwi7"]
+[ext_resource type="Script" path="res://scripts/window.gd" id="2_oew16"]
+[ext_resource type="Texture2D" uid="uid://bhpjnwyo23hmp" path="res://assets/ui/button/quit_normal.png" id="3_2b0gx"]
+[ext_resource type="Texture2D" uid="uid://bnv17yt4iibnv" path="res://assets/ui/button/quit_pressed.png" id="4_c0d7q"]
 
-[node name="Window" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_ksqua")
+[sub_resource type="InputEventAction" id="InputEventAction_iejfp"]
+action = &"quit_all_window"
+pressed = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 318.0
-offset_bottom = 193.0
-color = Color(0.0666667, 0.247059, 0.262745, 1)
+[sub_resource type="Shortcut" id="Shortcut_o1vxd"]
+events = [SubResource("InputEventAction_iejfp")]
 
-[node name="FoodSlot" parent="." instance=ExtResource("4_koqdb")]
+[node name="Window" type="NinePatchRect"]
+z_index = 10
+offset_right = 256.0
+offset_bottom = 160.0
+texture = ExtResource("1_n8e4u")
+region_rect = Rect2(0, 0, 317, 200)
+patch_margin_left = 32
+patch_margin_top = 40
+patch_margin_right = 29
+patch_margin_bottom = 24
+script = ExtResource("2_oew16")
+
+[node name="DragArea" type="Control" parent="."]
 layout_mode = 1
-offset_left = 237.0
-offset_top = 50.0
-offset_right = 237.0
-offset_bottom = 50.0
-card_type = 8
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titre" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme = ExtResource("2_8bwi7")
+theme_type_variation = &"HeaderSmall"
+text = "Navigation"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Quit" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 299.0
-offset_top = 1.0
-offset_right = 363.0
-offset_bottom = 65.0
+offset_left = -33.0
+offset_top = 8.0
+offset_right = -17.0
+offset_bottom = 22.0
 grow_horizontal = 0
-scale = Vector2(0.3, 0.3)
-texture_normal = ExtResource("1_un23u")
-texture_pressed = ExtResource("2_cv4jb")
+shortcut = SubResource("Shortcut_o1vxd")
+texture_normal = ExtResource("3_2b0gx")
+texture_pressed = ExtResource("4_c0d7q")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 159.0
-offset_top = 147.0
-offset_right = 205.0
-offset_bottom = 178.0
-text = "Start"
-
+[connection signal="gui_input" from="DragArea" to="." method="_on_gui_input"]
+[connection signal="gui_input" from="Quit" to="." method="_on_quit_gui_input"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
