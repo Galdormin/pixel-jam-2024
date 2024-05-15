@@ -7,17 +7,20 @@ var progress_enable: bool = false
 @onready var slot2: Slot = $Slot2
 @onready var slots: Array[Slot] = [slot1, slot2]
 @onready var database: Database = get_node("/root/Database")
+@onready var text_theme: Theme = load("res://themes/card.tres")
 
 var nb_active_slots: int = 2 
 
 var recipe_name: String
 var recipe: Array
+var recipe_description: Array
 var recipe_step: int = -1
 var recipe_nb_slots: int = 1
 
 func _ready():
 	super()
 	setup_one_slot()
+	update_recipe_layout()
 
 
 func _process(delta):
@@ -43,6 +46,13 @@ func _process(delta):
 		enable_button()
 	else:
 		disable_button()
+	
+	if progress_enable:
+		$ProgressBar.value = ($Timer.wait_time - $Timer.time_left) / $Timer.wait_time * 100
+	elif recipe_step >= 1:
+		$ProgressBar.value = 100
+	else:
+		$ProgressBar.value = 0
 
 ### SIGNALS ###
 
@@ -59,14 +69,14 @@ func _on_start_pressed():
 func _on_timer_timeout():
 	progress_enable = false
 	
+	slot1.enable()
+	if nb_active_slots > 1:
+		slot2.enable()
+	
 	recipe_step += 1
 	if recipe_step >= recipe.size():
 		end_recipe()
 		return
-	
-	slot1.enable()
-	if nb_active_slots > 1:
-		slot2.enable()
 	
 	recipe_nb_slots = recipe[recipe_step].size()
 	$Start/Label.text = "Add Ingredient"
@@ -114,7 +124,7 @@ func setup_one_slot():
 	slot2.disable()
 	slot2.hide()
 	
-	slot1.position = Vector2(280, 46)
+	slot1.position = Vector2(300, 46)
 
 
 func setup_two_slots():
@@ -123,8 +133,8 @@ func setup_two_slots():
 	slot2.enable()
 	slot2.show()
 	
-	slot1.position = Vector2(230, 46)
-	slot2.position = Vector2(330, 46)
+	slot1.position = Vector2(250, 46)
+	slot2.position = Vector2(350, 46)
 
 
 func setup_slots(nb_slots: int):
@@ -187,6 +197,7 @@ func find_recipe(fish_name: String) -> bool:
 	
 	recipe_name = recipe_dict["name"]
 	recipe = recipe_dict["recipe"]
+	recipe_description = recipe_dict["description"]
 	recipe_nb_slots = recipe[0].size()
 	
 	return true
@@ -195,9 +206,37 @@ func find_recipe(fish_name: String) -> bool:
 func delete_recipe():
 	recipe_name = ""
 	recipe = []
+	recipe_description = []
 	recipe_nb_slots = 1
 	recipe_step = -1
 
 
 func update_recipe_layout():
 	$RecipeLabel/RecipeName.text = recipe_name
+	
+	# Remove all labels
+	for n in $RecipeGrid.get_children():
+		$RecipeGrid.remove_child(n)
+		n.queue_free()
+	
+	# Add new labels
+	for i in recipe_description.size():
+		var number = Label.new()
+		number.text = str(i+1) + '-'
+		number.theme = text_theme
+		$RecipeGrid.add_child(number)
+		
+		var desc = Label.new()
+		desc.text = recipe_description[i][0]
+		desc.theme = text_theme
+		$RecipeGrid.add_child(desc)
+		
+		var blank = Label.new()
+		blank.text = " "
+		blank.theme = text_theme
+		$RecipeGrid.add_child(blank)
+		
+		var line = Label.new()
+		line.text = "-> " + recipe_description[i][1]
+		line.theme = text_theme
+		$RecipeGrid.add_child(line) 

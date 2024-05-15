@@ -4,13 +4,21 @@
 		"recipe": [
 			["Sardine"],
 			["Floor", "Aqua"]
+		],
+		"description": [
+			["Clean the Sardine", "Add 1 Sardine"],
+			["Prepare the tempura batter", "Add 1 Floor and 1 Aqua"]
 		]
 	},
 	"Bream": {
 		"name": "Sea Bream Stew",
 		"recipe": [
-			["Sea Bream", "Aqua"],
+			["Bream", "Aqua"],
 			["Carrot", "Carrot"]
+		],
+		"description": [
+			["Cook the Bream", "Add 1 Bream and 1 Aqua"],
+			["Add the carrots", "Add 2 Carrot"]
 		]
 	},
 	"Cod": {

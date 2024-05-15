@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://7n4rkf3kbdtp"]
+[gd_scene load_steps=9 format=3 uid="uid://7n4rkf3kbdtp"]
 
 [ext_resource type="PackedScene" uid="uid://bvysxwumu1ofw" path="res://scenes/window.tscn" id="1_v5vbs"]
 [ext_resource type="PackedScene" uid="uid://c2vqextiq0c1g" path="res://scenes/slot.tscn" id="2_oanev"]
@@ -6,9 +6,11 @@
 [ext_resource type="Theme" uid="uid://dw88p5q24f3k5" path="res://themes/card.tres" id="3_t6v4a"]
 [ext_resource type="Texture2D" uid="uid://vnrtn7tp4n02" path="res://assets/ui/button/main_button_normal.png" id="4_6aydf"]
 [ext_resource type="Texture2D" uid="uid://ccg43x4yp7fby" path="res://assets/ui/button/main_button_pressed.png" id="5_ht1au"]
+[ext_resource type="Texture2D" uid="uid://c0l414sdc5jjc" path="res://assets/ui/logo/smoke.png" id="5_kdkwg"]
+[ext_resource type="Texture2D" uid="uid://cf6ni03xer71d" path="res://assets/ui/logo/smoke_white.png" id="6_ft4o3"]
 
 [node name="Window" instance=ExtResource("1_v5vbs")]
-offset_right = 438.0
+offset_right = 453.0
 offset_bottom = 214.0
 script = ExtResource("2_qmomr")
 
@@ -20,9 +22,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 330.0
+offset_left = 350.0
 offset_top = 46.0
-offset_right = 330.0
+offset_right = 350.0
 offset_bottom = 46.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -32,9 +34,9 @@ card_type = 10
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 230.0
+offset_left = 250.0
 offset_top = 46.0
-offset_right = 230.0
+offset_right = 250.0
 offset_bottom = 46.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -57,11 +59,22 @@ offset_bottom = 19.0
 theme = ExtResource("3_t6v4a")
 text = "Moules-frites"
 
-[node name="RecipeGrid" type="GridContainer" parent="." index="6"]
+[node name="ProgressBar" type="TextureProgressBar" parent="." index="6"]
 layout_mode = 0
-offset_left = 24.0
+offset_left = 202.0
+offset_top = 59.0
+offset_right = 240.0
+offset_bottom = 193.0
+value = 75.0
+fill_mode = 3
+texture_under = ExtResource("5_kdkwg")
+texture_progress = ExtResource("6_ft4o3")
+
+[node name="RecipeGrid" type="GridContainer" parent="." index="7"]
+layout_mode = 0
+offset_left = 11.0
 offset_top = 69.0
-offset_right = 195.0
+offset_right = 182.0
 offset_bottom = 145.0
 columns = 2
 
@@ -113,11 +126,11 @@ theme = ExtResource("3_t6v4a")
 text = "-> Add 2 potatoes
 "
 
-[node name="Start" type="TextureButton" parent="." index="7"]
+[node name="Start" type="TextureButton" parent="." index="8"]
 layout_mode = 0
-offset_left = 272.0
+offset_left = 291.0
 offset_top = 178.0
-offset_right = 380.0
+offset_right = 399.0
 offset_bottom = 200.0
 texture_normal = ExtResource("4_6aydf")
 texture_pressed = ExtResource("5_ht1au")
@@ -137,7 +150,7 @@ text = "Start Cooking"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="." index="8"]
+[node name="Timer" type="Timer" parent="." index="9"]
 wait_time = 5.0
 one_shot = true
 
