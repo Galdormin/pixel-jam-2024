@@ -6,6 +6,21 @@
 			"description": "A small amount of desalinated water. It can be drink, cook or use to water the plant."
 		},
 		{
+			"name": "Sea",
+			"type": "Map",
+			"description": "A small amount of desalinated water. It can be drink, cook or use to water the plant."
+		},
+		{
+			"name": "Swamp",
+			"type": "Map",
+			"description": "A small amount of desalinated water. It can be drink, cook or use to water the plant."
+		},
+		{
+			"name": "Rock",
+			"type": "Map",
+			"description": "A small amount of desalinated water. It can be drink, cook or use to water the plant."
+		},
+		{
 			"name": "Worm",
 			"type": "Bait",
 			"description": "Lorem Ipsum"
@@ -31,7 +46,7 @@
 			"description": "Lorem Ipsum"
 		},
 		{
-			"name": "Carot",
+			"name": "Carrot",
 			"type": "Food",
 			"description": "Lorem Ipsum"
 		},

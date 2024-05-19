@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://d3vtxlawk5erc"]
+[gd_scene load_steps=39 format=3 uid="uid://d3vtxlawk5erc"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_5kt6n"]
 [ext_resource type="PackedScene" uid="uid://djplopb2ynyxg" path="res://scenes/card.tscn" id="1_r388q"]
+[ext_resource type="Texture2D" uid="uid://se6bsqwcpsj4" path="res://assets/background/sea.png" id="2_32elq"]
 [ext_resource type="Texture2D" uid="uid://matrn7shyeat" path="res://assets/boat/boat.png" id="2_br3x8"]
 [ext_resource type="PackedScene" uid="uid://ogslke14vpjc" path="res://scenes/drawer.tscn" id="2_sk0e2"]
 [ext_resource type="PackedScene" uid="uid://cf0gj60igg086" path="res://scenes/info_popup.tscn" id="4_roj4n"]
@@ -20,23 +21,59 @@
 [ext_resource type="Texture2D" uid="uid://bmtseiit5nbru" path="res://assets/boat/kitchen_highlight.png" id="12_rhopd"]
 [ext_resource type="Texture2D" uid="uid://chfc6pnqroht3" path="res://assets/boat/food.png" id="13_c8tv7"]
 [ext_resource type="Texture2D" uid="uid://ck2r5lagg47fx" path="res://assets/boat/food_highlight.png" id="14_433h6"]
+[ext_resource type="Texture2D" uid="uid://cmkhcpjh8i222" path="res://assets/boat/carrot_highlight.png" id="16_fuc54"]
+[ext_resource type="Texture2D" uid="uid://sm5b60cvetv5" path="res://assets/boat/carrot.png" id="17_to5mp"]
+[ext_resource type="Texture2D" uid="uid://cn7ehygd4nk0a" path="res://assets/boat/cabbage.png" id="18_vpnms"]
+[ext_resource type="Texture2D" uid="uid://nvkwpu685c82" path="res://assets/boat/cabbage_highlight.png" id="19_knnnn"]
+[ext_resource type="Texture2D" uid="uid://bk4oahacv4y2n" path="res://assets/boat/chef.png" id="20_1tfkd"]
+[ext_resource type="Texture2D" uid="uid://dblwjtno0cehy" path="res://assets/boat/chef_highlight.png" id="21_1ju7e"]
 [ext_resource type="PackedScene" uid="uid://cim2syoph4f1p" path="res://scenes/wheat_window.tscn" id="21_food7"]
 [ext_resource type="PackedScene" uid="uid://7n4rkf3kbdtp" path="res://scenes/kitchen_window.tscn" id="22_iho8p"]
+[ext_resource type="PackedScene" uid="uid://csuxnicq6a5q7" path="res://scenes/discussion.tscn" id="23_4ragk"]
+[ext_resource type="Theme" uid="uid://dw88p5q24f3k5" path="res://themes/card.tres" id="24_wofxw"]
+[ext_resource type="PackedScene" uid="uid://d2gfm3ytuygln" path="res://scenes/cabbage_window.tscn" id="28_6p4bb"]
+[ext_resource type="PackedScene" uid="uid://b8ok5x85kosvr" path="res://scenes/carrot_window.tscn" id="29_a0bb4"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_dxqji"]
+action = &"quit_all_window"
+
+[sub_resource type="Shortcut" id="Shortcut_ng7ov"]
+events = [SubResource("InputEventAction_dxqji")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v82g"]
+bg_color = Color(0.756114, 0.471683, 0.339697, 0.858824)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.767164, 0.382638, 0.271179, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="InputEventAction" id="InputEventAction_l0oif"]
+action = &"quit_all_window"
+
+[sub_resource type="Shortcut" id="Shortcut_6jjgf"]
+events = [SubResource("InputEventAction_l0oif")]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_5kt6n")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.3984, 0.621393, 0.83, 1)
+texture = ExtResource("2_32elq")
+stretch_mode = 2
 
 [node name="Boat" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -1.0
+offset_right = 959.0
+offset_bottom = 400.0
 texture = ExtResource("2_br3x8")
 
 [node name="LadderButton" type="TextureButton" parent="Boat"]
@@ -68,10 +105,10 @@ texture_hover = ExtResource("8_tf4oj")
 
 [node name="FishButton" type="TextureButton" parent="Boat"]
 layout_mode = 0
-offset_left = 147.0
-offset_top = 98.0
-offset_right = 247.0
-offset_bottom = 186.0
+offset_left = 142.0
+offset_top = 100.0
+offset_right = 242.0
+offset_bottom = 188.0
 texture_normal = ExtResource("9_kc7w3")
 texture_hover = ExtResource("10_qw4rl")
 
@@ -86,12 +123,41 @@ texture_hover = ExtResource("12_rhopd")
 
 [node name="WheatButton" type="TextureButton" parent="Boat"]
 layout_mode = 0
-offset_left = 530.0
-offset_top = 212.0
-offset_right = 590.0
-offset_bottom = 264.0
+offset_left = 542.0
+offset_top = 220.0
+offset_right = 580.0
+offset_bottom = 256.0
 texture_normal = ExtResource("13_c8tv7")
 texture_hover = ExtResource("14_433h6")
+
+[node name="CarrotButton" type="TextureButton" parent="Boat"]
+visible = false
+layout_mode = 0
+offset_left = 542.0
+offset_top = 147.0
+offset_right = 580.0
+offset_bottom = 183.0
+texture_normal = ExtResource("16_fuc54")
+texture_hover = ExtResource("17_to5mp")
+
+[node name="CabbageButton" type="TextureButton" parent="Boat"]
+visible = false
+layout_mode = 0
+offset_left = 504.0
+offset_top = 230.0
+offset_right = 542.0
+offset_bottom = 266.0
+texture_normal = ExtResource("18_vpnms")
+texture_hover = ExtResource("19_knnnn")
+
+[node name="ChefButton" type="TextureButton" parent="Boat"]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 154.0
+offset_right = 340.0
+offset_bottom = 238.0
+texture_normal = ExtResource("20_1tfkd")
+texture_hover = ExtResource("21_1ju7e")
 
 [node name="Drawer" parent="." instance=ExtResource("2_sk0e2")]
 offset_top = 506.0
@@ -99,81 +165,185 @@ offset_bottom = 756.0
 
 [node name="Card" parent="Drawer" instance=ExtResource("1_r388q")]
 layout_mode = 0
-offset_left = 264.0
-offset_top = 113.0
-offset_right = 348.0
-offset_bottom = 233.0
-card_name = "Sea"
-card_type = "Map"
+offset_left = 63.0
+offset_top = 108.0
+offset_right = 147.0
+offset_bottom = 228.0
+card_name = "Sardine"
+card_type = "Food"
 
 [node name="Card5" parent="Drawer" instance=ExtResource("1_r388q")]
 layout_mode = 0
-offset_left = 472.0
-offset_top = 109.0
-offset_right = 556.0
-offset_bottom = 229.0
+offset_left = 163.0
+offset_top = 105.0
+offset_right = 247.0
+offset_bottom = 225.0
 card_name = "Bream"
 card_type = "Food"
 
 [node name="Card3" parent="Drawer" instance=ExtResource("1_r388q")]
 layout_mode = 0
-offset_left = 619.0
-offset_top = 108.0
-offset_right = 703.0
-offset_bottom = 228.0
-card_name = "Carrot"
+offset_left = 263.0
+offset_top = 104.0
+offset_right = 347.0
+offset_bottom = 224.0
+card_name = "Cod"
 card_type = "Food"
 
 [node name="Card4" parent="Drawer" instance=ExtResource("1_r388q")]
 layout_mode = 0
-offset_left = 733.0
-offset_top = 105.0
-offset_right = 817.0
-offset_bottom = 225.0
-card_name = "Carrot"
+offset_left = 454.0
+offset_top = 104.0
+offset_right = 538.0
+offset_bottom = 224.0
+card_name = "Pike"
+card_type = "Food"
+
+[node name="Card6" parent="Drawer" instance=ExtResource("1_r388q")]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 103.0
+offset_right = 441.0
+offset_bottom = 223.0
+card_name = "Eel"
 card_type = "Food"
 
 [node name="InfoPopup" parent="." instance=ExtResource("4_roj4n")]
 unique_name_in_owner = true
-offset_left = 709.0
-offset_right = -1.0
+offset_left = 708.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -489.0
 
-[node name="HelmWindow" parent="." instance=ExtResource("6_xcy5i")]
-visible = false
-offset_left = 668.0
-offset_top = 112.0
-offset_right = 949.0
-offset_bottom = 308.0
+[node name="MenuButton" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 31.0
+offset_bottom = 35.0
+shortcut = SubResource("Shortcut_ng7ov")
+text = "X"
 
-[node name="WaterWindow" parent="." instance=ExtResource("5_he5d5")]
-visible = false
-offset_left = 90.0
-offset_top = 271.0
-offset_right = 529.0
-offset_bottom = 471.0
+[node name="Window" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="FishingWindow" parent="." instance=ExtResource("6_4d10n")]
+[node name="KitchenWindow" parent="Window" instance=ExtResource("22_iho8p")]
 visible = false
-offset_left = 42.0
-offset_top = 43.0
-offset_right = 322.0
-offset_bottom = 238.0
+layout_mode = 0
+offset_left = 155.0
+offset_top = 89.0
+offset_right = 608.0
+offset_bottom = 303.0
 
-[node name="WheatWindow" parent="." instance=ExtResource("21_food7")]
+[node name="WheatWindow" parent="Window" instance=ExtResource("21_food7")]
 visible = false
+layout_mode = 0
 offset_left = 449.0
 offset_top = 206.0
 offset_right = 729.0
 offset_bottom = 401.0
 
-[node name="KitchenWindow" parent="." instance=ExtResource("22_iho8p")]
-offset_left = 155.0
-offset_top = 89.0
-offset_right = 608.0
-offset_bottom = 303.0
+[node name="FishingWindow" parent="Window" instance=ExtResource("6_4d10n")]
+visible = false
+layout_mode = 0
+offset_left = 42.0
+offset_top = 43.0
+offset_right = 322.0
+offset_bottom = 238.0
+
+[node name="WaterWindow" parent="Window" instance=ExtResource("5_he5d5")]
+visible = false
+layout_mode = 0
+offset_left = 90.0
+offset_top = 271.0
+offset_right = 529.0
+offset_bottom = 471.0
+
+[node name="HelmWindow" parent="Window" instance=ExtResource("6_xcy5i")]
+visible = false
+layout_mode = 0
+offset_left = 668.0
+offset_top = 112.0
+offset_right = 949.0
+offset_bottom = 308.0
+
+[node name="CabbageWindow" parent="Window" instance=ExtResource("28_6p4bb")]
+visible = false
+layout_mode = 0
+offset_left = 290.0
+offset_top = 184.0
+offset_right = 570.0
+offset_bottom = 379.0
+
+[node name="CarrotWindow" parent="Window" instance=ExtResource("29_a0bb4")]
+visible = false
+layout_mode = 0
+offset_left = 453.0
+offset_top = 18.0
+offset_right = 733.0
+offset_bottom = 213.0
+
+[node name="ChefDiscussion" parent="." instance=ExtResource("23_4ragk")]
+visible = false
+offset_left = 249.0
+offset_top = 130.0
+offset_right = 725.0
+offset_bottom = 329.0
+
+[node name="Menu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Menu"]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 200.0
+offset_right = 555.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1v82g")
+
+[node name="Start" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 229.0
+offset_right = 540.0
+offset_bottom = 269.0
+theme = ExtResource("24_wofxw")
+theme_override_font_sizes/font_size = 25
+shortcut = SubResource("Shortcut_6jjgf")
+text = "Start"
+
+[node name="Settings" type="Button" parent="Menu/Start"]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 120.0
+offset_bottom = 90.0
+theme = ExtResource("24_wofxw")
+theme_override_font_sizes/font_size = 25
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Menu/Start/Settings"]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 120.0
+offset_bottom = 90.0
+theme = ExtResource("24_wofxw")
+theme_override_font_sizes/font_size = 25
+text = "Quit"
 
 [connection signal="pressed" from="Boat/WaterButton" to="." method="_on_water_button_pressed"]
 [connection signal="pressed" from="Boat/HelmButton" to="." method="_on_helm_button_pressed"]
 [connection signal="pressed" from="Boat/FishButton" to="." method="_on_fish_button_pressed"]
 [connection signal="pressed" from="Boat/KitchenButton" to="." method="_on_kitchen_button_pressed"]
 [connection signal="pressed" from="Boat/WheatButton" to="." method="_on_wheat_button_pressed"]
+[connection signal="pressed" from="Boat/CarrotButton" to="." method="_on_carrot_button_pressed"]
+[connection signal="pressed" from="Boat/CabbageButton" to="." method="_on_cabbage_button_pressed"]
+[connection signal="pressed" from="Boat/ChefButton" to="." method="_on_chef_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Start/Settings/Quit" to="." method="_on_quit_pressed"]

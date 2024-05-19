@@ -1,59 +1,54 @@
 extends UIWindow
 
-@onready var slot: Slot = $Slot
-
-# Load SignalBus
-@onready var signal_bus: SignalBus = get_node("/root/SignalBus")
-
+# Progressbar
 var progress_enable: bool = false
-var current_map: String = "Sea"
 
-# Called when the node enters the scene tree for the first time.
+@onready var slot: Slot = $Slot
+@onready var database: Database = get_node("/root/Database")
+
 func _ready():
 	super()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	super(ready)
+	super(delta)
 	
 	# Progress
 	if progress_enable:
 		$ProgressBar.value = ($Timer.wait_time - $Timer.time_left) / $Timer.wait_time * 100
-		
-	if not slot.has_card():
+	elif not $Slot.has_card():
 		$ProgressBar.value = 0
-
-	if not progress_enable and slot.has_card() and slot.get_card().card_name != current_map:
 		enable_button()
-	else:
-		disable_button()
 
 ### SIGNALS ###
 
 func _on_start_pressed():
-	slot.lock_card()
-	$Timer.start()
-	progress_enable = true
-	disable_button()
+	if slot.has_card():
+		slot.disable()
+		slot.delete_card()
+		$Timer.start()
+		progress_enable = true
+		disable_button()
 
 
 func _on_timer_timeout():
-	slot.unlock_card()
+	$Slot.enable()
 	progress_enable = false
 	
-	var card_map_name = slot.get_card().card_name
-	current_map = card_map_name
-	signal_bus.on_map_change.emit(current_map)
+	var cabbage = create_cabbage_card()
+	cabbage.z_index = 0
+	slot.add_card(cabbage, false)
 
 
-### FUNCTIONS ###
+### REGULAR FUNCTIONS ###
 
+# Close window
 func close():
 	super()
 	slot.disable()
+	
 
-
+# Open window
 func open():
 	super()
 	slot.enable()
@@ -76,3 +71,12 @@ func enable_button():
 	# Disable button
 	$Start.disabled = false
 	$Start.button_pressed = false
+
+
+func create_cabbage_card() -> Card:
+	var card = database.create_card_by_name("Cabbage")
+	card.z_index = 1
+	
+	add_child(card)
+	move_child(card, -1)
+	return card

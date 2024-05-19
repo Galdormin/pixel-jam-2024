@@ -1,4 +1,4 @@
-extends ColorRect
+extends Panel
 
 
 @onready var signal_bus: SignalBus = get_node("/root/SignalBus")

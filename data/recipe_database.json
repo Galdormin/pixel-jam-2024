@@ -7,7 +7,7 @@
 		],
 		"description": [
 			["Clean the Sardine", "Add 1 Sardine"],
-			["Prepare the tempura batter", "Add 1 Floor and 1 Aqua"]
+			["Prepare the batter", "Add 1 Floor and 1 Aqua"]
 		]
 	},
 	"Bream": {
@@ -18,7 +18,7 @@
 		],
 		"description": [
 			["Cook the Bream", "Add 1 Bream and 1 Aqua"],
-			["Add the carrots", "Add 2 Carrot"]
+			["Add the carrots", "Add 2 Carrots"]
 		]
 	},
 	"Cod": {
@@ -27,6 +27,11 @@
 			["Cod"],
 			["Floor", "Aqua"],
 			["Aqua", "Seaweed"]
+		],
+		"description": [
+			["Cook the Cod", "Add 1 Cod"],
+			["Make the noodles", "Add 1 Floor and 1 Aqua"],
+			["Make the broth", "Add 1 Aqua and 1 Seaweed"]
 		]
 	},
 	"Eel": {
@@ -34,6 +39,10 @@
 		"recipe": [
 			["Eel", "Carrot"],
 			["Seaweed", "Seaweed"],
+		],
+		"description": [
+			["Cook the Eel", "Add 1 Eel and 1 Carrot"],
+			["Cut the seaweeds", "Add 2 Seaweeds"]
 		]
 	},
 	"Pike": {
@@ -42,6 +51,11 @@
 			["Pike"],
 			["Floor"],
 			["Cabbage"]
+		],
+		"description": [
+			["Cook the pike", "Add 1 Pike"],
+			["Make the quenelle", "Add 1 Floor"],
+			["Cut the cabbage", "Add 1 Cabbage"]
 		]
 	},
 	"Mussel": {

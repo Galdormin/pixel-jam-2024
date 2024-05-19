@@ -1,0 +1,70 @@
+{
+	"chapter-order": [
+		"intro",
+		"Sardine Tempura",
+		"Sea Bream Stew",
+		"Cod Ramen",
+		"Eel with Seaweed",
+		"Pike Quenelle",
+		"end"
+	],
+	"chapters": {
+		"intro": {
+			"text": [
+				"Aye, pay attention, ye scurvy-laden scallywag! If ye want to earn yer keep on this ship, ye better learn more than just swordplay.",
+				"Let me give ye a bit of a tutorial: ye'll be usin' the fishin' rod up at the bow to reel in some fresh catches, tendin' to the gardens for yer veggies, and don't forget to use the water desalinator to keep 'em plants watered.",
+				"I'll have ye darting across these waves quicker than a dolphin on a rum run, fetching spices and maritime knowledge to whip up the finest meals these waters ever tasted!"
+			]
+		},
+		"Sardine Tempura": {
+			"text": [
+				"For this first mission, ye'll be rustlin' up some Sardines Tempura. Now, here's the trick: ye can reel in them sardines with oyster shells, and mind ye, those shells don't need no bait.",
+				"Ye'll find the detailed instructions in the ship's kitchen, under the page marked 'Sardine.' Now, off with ye, and don't ye come back 'til ye've got the Sardine Tempura!"
+			],
+			"objective": "Sardine Tempura"
+		},
+		"Sea Bream Stew": {
+			"text": [
+				"Arr, not bad for a landlubber! Ye've managed to whip up some decent tempura, but don't let it get to yer head. There's still plenty more plunderin' and cookin' to be done aboard this ship. Keep up the good work, or it's the plank for ye!.",
+				"Today's mission ain't for the faint of heart. I want ye to rustle up a Sea Bream Stew that'll make Davy Jones himself weep with envy. Grab yer gear and head out to reel in them breams.",
+				"And remember, none of that fancy fishin' rod business—just yer wits, a keen eye for opportunity, and don't forget the worm to lure 'em in. Once ye've got what we need, head back to the kitchen.",
+				"The detailed recipe can be found in the ship's kitchen, under the page marked 'Sea Bream.' Now, off with ye, and don't ye dare come back 'til ye've got the makings of a stew fit for a pirate king! And ye'll need some carrot, so I've planted some!"
+			],
+			"objective": "Sea Bream Stew",
+			"unlock": "Carrot"
+		},
+		"Cod Ramen": {
+			"text": [
+				"Avast, ye scallywag! This Sea Bream Stew ye've concocted ain't half bad, I'll give ye that much. But don't go thinkin' ye're the king of the galley just yet. There's still plenty of seas to sail and recipes to master.",
+				"We're off to the swampy depths for our next adventure. Our mission: to snag the fixin's for a mighty Cod Ramen. Take a peek at this map—these be the murky swamps where we'll hunt our prey.",
+				"But keep yer wits about ye and remember where we set sail from. Here's a reminder of the seas we've navigated.  Keep it handy, for we'll be back to these waters soon enough, we're just getting some baits.",
+				"Arr, we'll be usin' oyster shells for bait as we head back to these waters to catch the cod and cook up some Cod Ramen fit for a hearty meal!"
+			],
+			"gifts": ["Sea", "Swamp"],
+			"objective": "Cod Ramen"
+		},
+		"Eel with Seaweed": {
+			"text": [
+				"The Cod Ramen ye whipped up was a feast fit for even the most discernin' of pirates! But yer culinary journey ain't over yet. Next on the menu: Eel with Seaweed!",
+				"Back to the swampy depths we go! Ye'll be rustlin' up some eel and gatherin' seaweed for yer next meal!"
+			],
+			"objective": "Eel with Seaweed"
+		},
+		"Pike Quenelle": {
+			"text": [
+				"Let it be known across these seas that our eel with seaweed concoction was a savory sensation, a dish worthy of the most daring of buccaneers!",
+				"But our culinary voyage is far from over. Prepare yer palates, for we're settin' sail towards a delicacy revered amongst pirates: pike quenelles! I've planted some cabbage, ye'll need it for the quenelle."
+			],
+			"objective": "Pike Quenelle",
+			"unlock": "Cabbage"
+		},
+		"end": {
+			"text": [
+				"Let the winds carry me words across the seven seas: yer journey into the realm of pike quenelles was a triumph beyond compare!",
+				"With every bite, we tasted the essence of true pirate mastery, a culinary adventure worthy of legends. And as the last spoonful is savored, I declare to ye all: our pirate apprentice has sailed through the tempests of the kitchen and emerged as a grand chef of the high seas!",
+				"No longer a mere swabbie, but a captain in their own right, ready to brave the waves solo and conquer the culinary world, one dish at a time!"
+			],
+			"objective": "Aqua"
+		}
+	}
+}

@@ -6,12 +6,14 @@ extends Node
 var _card_data: Array
 var _fish_data: Dictionary
 var _recipe_data: Dictionary
+var _chapter_data: Dictionary
 
 
 func _ready():
 	_card_data = load_database("res://data/card_database.json")["data"]
 	_fish_data = load_database("res://data/fishing_database.json")
 	_recipe_data = load_database("res://data/recipe_database.json")
+	_chapter_data = load_database("res://data/chapters_database.json")
 
 
 ### FUNCTIONS ###
@@ -51,3 +53,11 @@ func get_recipe_data(fish_name: String) -> Dictionary:
 		return {}
 	
 	return _recipe_data[fish_name]
+
+
+func get_chapter_order() -> Array:
+	return _chapter_data["chapter-order"]
+
+
+func get_chapter_data(chapter_name: String) -> Dictionary:
+	return _chapter_data["chapters"][chapter_name]

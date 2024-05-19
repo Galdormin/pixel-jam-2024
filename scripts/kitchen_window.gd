@@ -125,6 +125,7 @@ func setup_one_slot():
 	slot2.hide()
 	
 	slot1.position = Vector2(300, 46)
+	slot2.position = Vector2(0, 46)
 
 
 func setup_two_slots():

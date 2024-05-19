@@ -1,0 +1,129 @@
+[gd_scene load_steps=14 format=3 uid="uid://csuxnicq6a5q7"]
+
+[ext_resource type="Texture2D" uid="uid://bhpjnwyo23hmp" path="res://assets/ui/button/quit_normal.png" id="1_iv2pe"]
+[ext_resource type="Script" path="res://scripts/discussion.gd" id="1_oddns"]
+[ext_resource type="Texture2D" uid="uid://bnv17yt4iibnv" path="res://assets/ui/button/quit_pressed.png" id="2_2ucor"]
+[ext_resource type="PackedScene" uid="uid://c2vqextiq0c1g" path="res://scenes/slot.tscn" id="3_mf0l4"]
+[ext_resource type="Theme" uid="uid://dw88p5q24f3k5" path="res://themes/card.tres" id="4_vj550"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilmtx"]
+bg_color = Color(0.1855, 0.278717, 0.35, 0.866667)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="InputEventAction" id="InputEventAction_iejfp"]
+action = &"quit_all_window"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_f4tme"]
+events = [SubResource("InputEventAction_iejfp")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bndnu"]
+bg_color = Color(0.2226, 0.33446, 0.42, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anoda"]
+bg_color = Color(0.223529, 0.333333, 0.419608, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bn7vm"]
+bg_color = Color(0.1696, 0.254827, 0.32, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sprcm"]
+bg_color = Color(0.1272, 0.19112, 0.24, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r8x46"]
+
+[node name="Panel" type="Panel"]
+offset_right = 476.0
+offset_bottom = 199.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ilmtx")
+script = ExtResource("1_oddns")
+
+[node name="Quit" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.0
+offset_top = 5.0
+offset_right = -6.0
+offset_bottom = 19.0
+grow_horizontal = 0
+shortcut = SubResource("Shortcut_f4tme")
+texture_normal = ExtResource("1_iv2pe")
+texture_pressed = ExtResource("2_2ucor")
+
+[node name="Slot" parent="." instance=ExtResource("3_mf0l4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 363.0
+offset_top = 29.0
+offset_right = 363.0
+offset_bottom = 29.0
+grow_horizontal = 1
+grow_vertical = 1
+card_type = 16
+
+[node name="Next" type="Button" parent="."]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 161.0
+offset_right = 444.0
+offset_bottom = 182.0
+theme = ExtResource("4_vj550")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bndnu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_anoda")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bn7vm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_sprcm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r8x46")
+text = "Next"
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 28.0
+offset_right = 336.0
+offset_bottom = 172.0
+theme = ExtResource("4_vj550")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 15
+text = "Let me give ye a bit of a tutorial: ye'll be usin' the fishin' rod up at the bow to reel in some fresh catches, tendin' to the gardens for yer veggies, and don't forget to use the water desalinator to keep 'em plants watered."
+autowrap_mode = 2
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

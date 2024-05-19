@@ -5,11 +5,14 @@ var progress_enable: bool = false
 
 @onready var slot: Slot = $Slot
 @onready var database: Database = get_node("/root/Database")
+@onready var signal_bus: SignalBus = get_node("/root/SignalBus")
 
 var bait_name: String
+var current_map: String = "Sea"
 
 func _ready():
 	super()
+	signal_bus.on_map_change.connect(_on_map_change)
 
 
 func _process(delta):
@@ -23,6 +26,9 @@ func _process(delta):
 		enable_button()
 
 ### SIGNALS ###
+
+func _on_map_change(map_name: String):
+	current_map = map_name
 
 func _on_start_pressed():
 	if not slot.has_card():
@@ -80,7 +86,7 @@ func enable_button():
 
 
 func create_fish_card(bait_name: String) -> Card:
-	var fish_name = database.get_fish_from_bait(bait_name, "Sea")
+	var fish_name = database.get_fish_from_bait(bait_name, current_map)
 	var card = database.create_card_by_name(fish_name)
 	card.z_index = 1
 	
