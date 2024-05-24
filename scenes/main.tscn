@@ -1,7 +1,6 @@
-[gd_scene load_steps=39 format=3 uid="uid://d3vtxlawk5erc"]
+[gd_scene load_steps=38 format=3 uid="uid://d3vtxlawk5erc"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_5kt6n"]
-[ext_resource type="PackedScene" uid="uid://djplopb2ynyxg" path="res://scenes/card.tscn" id="1_r388q"]
 [ext_resource type="Texture2D" uid="uid://se6bsqwcpsj4" path="res://assets/background/sea.png" id="2_32elq"]
 [ext_resource type="Texture2D" uid="uid://matrn7shyeat" path="res://assets/boat/boat.png" id="2_br3x8"]
 [ext_resource type="PackedScene" uid="uid://ogslke14vpjc" path="res://scenes/drawer.tscn" id="2_sk0e2"]
@@ -163,51 +162,6 @@ texture_hover = ExtResource("21_1ju7e")
 offset_top = 506.0
 offset_bottom = 756.0
 
-[node name="Card" parent="Drawer" instance=ExtResource("1_r388q")]
-layout_mode = 0
-offset_left = 63.0
-offset_top = 108.0
-offset_right = 147.0
-offset_bottom = 228.0
-card_name = "Sardine"
-card_type = "Food"
-
-[node name="Card5" parent="Drawer" instance=ExtResource("1_r388q")]
-layout_mode = 0
-offset_left = 163.0
-offset_top = 105.0
-offset_right = 247.0
-offset_bottom = 225.0
-card_name = "Bream"
-card_type = "Food"
-
-[node name="Card3" parent="Drawer" instance=ExtResource("1_r388q")]
-layout_mode = 0
-offset_left = 263.0
-offset_top = 104.0
-offset_right = 347.0
-offset_bottom = 224.0
-card_name = "Cod"
-card_type = "Food"
-
-[node name="Card4" parent="Drawer" instance=ExtResource("1_r388q")]
-layout_mode = 0
-offset_left = 454.0
-offset_top = 104.0
-offset_right = 538.0
-offset_bottom = 224.0
-card_name = "Pike"
-card_type = "Food"
-
-[node name="Card6" parent="Drawer" instance=ExtResource("1_r388q")]
-layout_mode = 0
-offset_left = 357.0
-offset_top = 103.0
-offset_right = 441.0
-offset_bottom = 223.0
-card_name = "Eel"
-card_type = "Food"
-
 [node name="InfoPopup" parent="." instance=ExtResource("4_roj4n")]
 unique_name_in_owner = true
 offset_left = 708.0
@@ -293,7 +247,6 @@ offset_right = 725.0
 offset_bottom = 329.0
 
 [node name="Menu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

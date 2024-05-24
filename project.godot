@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Aqua Pixel Jam"
+config/name="The Pirate Chef"
 config/tags=PackedStringArray("2d", "card", "jam")
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/cards/art/cod_ramen.png"
 
 [autoload]
 
@@ -25,6 +25,7 @@ Database="*res://scripts/database.gd"
 
 window/size/viewport_width=960
 window/size/viewport_height=600
+window/stretch/mode="viewport"
 
 [input]
 
